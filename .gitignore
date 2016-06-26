@@ -10,6 +10,7 @@ pids
 
 # IDE
 .idea
+.env
 
 # Babel ES6 compiles files
 dist
@@ -37,5 +38,3 @@ node_modules
 
 # Optional REPL history
 .node_repl_history
-
-.env

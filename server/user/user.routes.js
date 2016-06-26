@@ -2,6 +2,7 @@ import express from 'express';
 import validate from 'express-validation';
 import paramValidation from './user.validation';
 import userCtrl from './user.controller';
+// import ensure from 'connect-ensure-login'
 
 const debug = require('debug')('express-mongoose-es6-rest-api:index');
 const router = express.Router();	// eslint-disable-line new-cap

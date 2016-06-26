@@ -2,7 +2,6 @@ import Promise from 'bluebird';
 import mongoose from 'mongoose';
 import httpStatus from 'http-status';
 import APIError from '../helpers/APIError';
-import BookSchema from '../book/book.model';
 
 /**
  * User Schema
@@ -32,28 +31,12 @@ const UserSchema = new mongoose.Schema({
 		type: Date,
 		default: Date.now
 	},
-	name: String,
-	city: String,
-	state: String,
-	books: [BookSchema]
+	twitterId: String
 });
 
 /**
  * Methods
  */
-UserSchema.method({
-	findBookById(_id) {
-		const book = this.books.id(_id);
-		if (!book) {
-			return Promise.reject('book not found');
-		}
-		return Promise.resolve(book);
-	},
-	findBookByIdSync(_id) {
-		const book = this.books.id(_id);
-		return book;
-	}
-});
 
 /**
  * Statics
@@ -124,14 +107,6 @@ UserSchema.statics = {
 			.skip(skip)
 			.limit(limit)
 			.execAsync();
-	},
-	findByBook(id) {
-		return this.find({ 'books._id': id }).execAsync((err, book) => {
-			if (err) {
-				Promise.reject(err);
-			}
-			return Promise.resolve(book);
-		});
 	}
 };
 

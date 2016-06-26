@@ -12,7 +12,8 @@ import winstonInstance from './winston';
 import routes from '../server/routes';
 import config from './env';
 import APIError from '../server/helpers/APIError';
-
+import passport from 'passport';
+import passportUser from '../server/user/user.passport'; // eslint-disable-line no-unused-vars
 const app = express();
 const path = process.cwd();
 
@@ -20,6 +21,9 @@ if (config.env === 'development') {
 	app.use(logger('dev'));
 }
 app.use('/client', express.static(`${path}/client`));
+
+app.use(passport.initialize());
+app.use(passport.session());
 
 // parse body params and attache them to req.body
 app.use(bodyParser.json());
