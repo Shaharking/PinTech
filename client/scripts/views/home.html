@@ -1,0 +1,27 @@
+<div class="body-header text-center">
+    <h1>Books Trading </h1>
+    <p>
+        No longer buys new books , exchange your books with other peoples
+    </p>
+</div>
+
+<div class="row">
+    <div class="col-xs-12 col-sm-6 col-lg-4" ng-repeat="poll in polls">
+        <div class="col-md-12 poll-item-box">
+            <div class="poll-header">
+                <h3 class="text-center">
+                    <span class="glyphicon glyphicon-trash pull-left" ng-click="deletePoll(poll)" ng-show="myConnectedUsername == poll.username" aria-hidden="true"></span>
+                    <a ng-href="/#/poll/watch/{{poll.username}}/{{poll.title}}">{{poll.title}}</a>
+                </h3>
+            </div>
+            <div class="poll-body">
+                <canvas id="bar" class="chart chart-bar"
+                        chart-data="chart[$index].data" chart-labels="chart[$index].labels" chart-series="chart[$index].series" chart-options="chart[$index].options">
+                </canvas>
+            </div>
+            <div class="pool-footer">
+                <p><a href="/#/user/{{poll.username}}"> {{poll.username}}</a></p>
+            </div>
+        </div>
+    </div>
+</div>

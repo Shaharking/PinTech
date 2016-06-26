@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+
+<html ng-app="myApp">
+
+	<head>
+		<title>Book Trading Club</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" href="/client/bower_components/bootstrap/dist/css/bootstrap.css"/>
+		<link rel="stylesheet" href="/client/bower_components/sweetalert/dist/sweetalert.css"/>
+		<script src="/client/bower_components/angular/angular.js"></script>
+		<script src="/client/bower_components/sweetalert/dist/sweetalert.min.js"></script>
+        <script src="/client/bower_components/angular-route/angular-route.min.js"></script>
+        <script src="/client/bower_components/angular-sweetalert/sweetalert.js"></script>
+        <script src="/client/bower_components/angular-sanitize/angular-sanitize.min.js"></script>
+        <script src="/client/dist/all.js"></script>
+		<link href="/client/css/main.css" rel="stylesheet" type="text/css">
+	</head>
+
+	<body>
+        <div class="masterhead">
+            <div class="container" ng-controller="navigationController">
+
+                <nav class="blog-nav">
+                    <a class="blog-nav-item active" href="/#/">Home</a>
+                    <a class="blog-nav-item" href="/#/register" ng-show="isGuest">Sign up</a>
+                    <a class="blog-nav-item" href="/#/signin" ng-show="isGuest">Sign in</a>
+                    <a class="blog-nav-item" href="/#/books" ng-hide="isGuest">my books</a>
+                    <a class="blog-nav-item" href="/#/browse" ng-hide="isGuest">books trade</a>
+                    <a class="blog-nav-item" href="/#/profile" ng-hide="isGuest">profile</a>
+                    <a class="blog-nav-item navbar-right" ng-hide="isGuest" href="/#/user/{{username}}">{{username}}</a>
+                </nav>
+            </div>
+        </div>
+        <div class="container">
+
+            <div ng-view="">
+
+            </div>
+        </div>
+
+        <script id="__bs_script__">//<![CDATA[
+        document.write("<script async src='http://HOST:3000/browser-sync/browser-sync-client.2.11.2.js'><\/script>".replace("HOST", location.hostname));
+        //]]></script>
+    </body>
+
+</html>
+

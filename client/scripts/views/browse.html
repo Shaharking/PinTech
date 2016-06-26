@@ -1,0 +1,39 @@
+<div class="row">
+    <div class="col-xs-12">
+        <h2>Browse Books:</h2>
+        <h3>Select book you want </h3>
+    </div>
+    <div class="col-xs-12">
+        <div class="inline-block" ng-repeat="booklist in books">
+            <div class="book inline-block" ng-repeat="book in booklist.books">
+                <a ng-click="trade(booklist,book)" ng-class="{'active':book.mark}" class="cover">
+                    <img ng-src="{{book.picture}}" alt="{{book.name}}"/>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row" ng-show="isExchange">
+    <div class="col-xs-12">
+        <h2>Exchange with one of your books</h2>
+        <h3>Select the book you would like to give</h3>
+    </div>
+    <div class="col-xs-12">
+        <div class="inline-block" ng-repeat="booklist in mybooks">
+            <div class="book inline-block" ng-repeat="book in booklist.books">
+                <a ng-click="localtrade(booklist,book)" ng-class="{'active':book.mark, 'requested':book.requested}" class="cover">
+                    <img ng-src="{{book.picture}}" alt="{{book.name}}"/>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row" ng-show="isTradeable">
+    <div class="col-xs-12">
+        <form ng-submit="Tradebooks()">
+        <input type="submit" class="btn btn-primary" value="Trade books"/>
+        </form>
+    </div>
+</div>

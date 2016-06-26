@@ -1,0 +1,36 @@
+{
+  "name": "nightlife",
+  "description": "nightlife fcc challange",
+  "main": "server.js",
+  "authors": [
+    "Shahar Shalev"
+  ],
+  "license": "MIT",
+  "keywords": [
+    "MongoDB",
+    "Mongoose",
+    "full",
+    "stack",
+    "Express",
+    "Node",
+    "javascript",
+    "boilerplate"
+  ],
+  "homepage": "https://github.com/Shaharking/nightlife",
+  "moduleType": [],
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "directory": "public/bower_components",
+  "dependencies": {
+    "angular": "^1.5.2",
+    "bootstrap": "^3.3.6",
+    "angular-route": "^1.5.3",
+    "angular-sanitize": "^1.5.6",
+    "sweetalert": "^1.1.3"
+  }
+}
