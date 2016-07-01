@@ -9,13 +9,11 @@ import APIError from '../helpers/APIError';
 const UserSchema = new mongoose.Schema({
 	username: {
 		type: String,
-		required: true,
 		unique: true,
 		dropDups: true
 	},
 	password: {
-		type: String,
-		required: true
+		type: String
 	},
 	email: {
 		type: String,
@@ -24,8 +22,10 @@ const UserSchema = new mongoose.Schema({
 				/\S+@\S+\.\S+/.test(v);
 			},
 			message: '{VALUE} is not a mail address!'
-		},
-		required: true
+		}
+	},
+	name: {
+		type: String
 	},
 	createdAt: {
 		type: Date,
@@ -73,6 +73,30 @@ UserSchema.statics = {
 			}
 			const err = new APIError('User not exists', httpStatus.NOT_FOUND);
 			return Promise.reject(err);
+		});
+	},
+
+	findOrCreateTwitterAccount(profile) {
+		return new Promise((resolve, reject) => {
+			this.findOneAsync({
+				twitterId: profile.id
+			}).then((user) => { // eslint-disable-line arrow-body-style
+				if (!user) {
+					const newUser = new this({
+						twitterId: profile.id,
+						name: profile.displayName
+					});
+					newUser.saveAsync()
+							.then((savedUser) => {
+								resolve(savedUser);
+							})
+							.error((e) => {
+								reject(e);
+							});
+				} else {
+					resolve(user);
+				}
+			});
 		});
 	},
 

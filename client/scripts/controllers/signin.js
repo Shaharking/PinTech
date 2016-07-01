@@ -4,6 +4,18 @@
 myApp.controller('signInController', ['$scope', 'userService', '$window','$rootScope','SweetAlert','$location', function ($scope, $userService, $window, $rootScope,SweetAlert,$location) {
 
     $scope.submit = login;
+    $scope.twitterLogin = twitterLogin;
+
+    function HandlePopupResult(result) {
+        alert("result of popup is: " + result);
+    }
+
+    function twitterLogin(){
+        var win = $window.open('/api/login/twitter','_self','toolbar=no,width=600,height=300');
+/*        try {
+            result.opener.HandlePopupResult(this.getAttribute("result"));
+        }*/
+    }
 
     function login() {
         var user = $scope.form;

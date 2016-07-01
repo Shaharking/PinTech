@@ -1,8 +1,7 @@
 import express from 'express';
 import userRoutes from '../user/user.routes';
 import loginRoutes from '../login/login.routes';
-import bookRoutes from '../book/book.routes';
-import requestRoutes from '../request/request.routes';
+import bookRoutes from '../pin/pin.routes';
 
 const router = express.Router();	// eslint-disable-line new-cap
 
@@ -16,8 +15,6 @@ router.use('/users', userRoutes);
 
 router.use('/login', loginRoutes);
 
-router.use('/books', bookRoutes);
-
-router.use('/requests', requestRoutes);
+router.use('/pins', bookRoutes);
 
 export default router;

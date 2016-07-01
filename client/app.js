@@ -2,7 +2,7 @@
  * Created by Shahar on 26/03/2016.
  */
 
-var myApp = angular.module('myApp', ['ngRoute','oitozero.ngSweetAlert']);
+var myApp = angular.module('myApp', ['ngRoute','oitozero.ngSweetAlert','ngMasonry']);
 
 myApp.config(['$routeProvider',
     function($routeProvider) {
@@ -23,19 +23,11 @@ myApp.config(['$routeProvider',
             templateUrl: '/client/scripts/views/signin.html',
             controller : 'signInController'
         }).
-        when('/books',{
-            templateUrl: '/client/scripts/views/book.html',
-            controller : 'bookController'
+        when('/pin',{
+            templateUrl: '/client/scripts/views/pin.create.html',
+            controller : 'pinController'
         }).
-        when('/browse',{
-            templateUrl: '/client/scripts/views/browse.html',
-            controller : 'browseController'
-        }).
-        when('/poll/watch/:username/:title',{
-            templateUrl: '/client/scripts/views/poll.html',
-            controller : 'pollController'
-        }).
-        when('/user/:username',{
+        when('/user/:id',{
             templateUrl: '/client/scripts/views/home.html',
             controller: 'homeController'
         }).

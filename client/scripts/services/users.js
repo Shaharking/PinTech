@@ -18,9 +18,8 @@ myApp.factory('userService',['$http', '$window', function($http,$window){
         return $http.post('/api/login',data);
     }
 
-    function getUserDetails(username){
-        var user = username || $window.sessionStorage.username;
-        return $http.get('/api/users/'+user);
+    function getUserDetails(){
+        return $http.get('/api/login/');
     }
 
     function updateUser(data,username){

@@ -87,34 +87,21 @@ header p {
 	padding: 20px 0;
 }
 
-.poll-item-box{
-	border:1px solid #e3e3e3;
-	box-shadow: 1px 1px 3px #3c3c3c;
-    margin: 15px 0;
-}
-.poll-item-wrapper{
-    margin:5px;
-    padding: 5px;
-}
 
 .inline-block{
 	display: inline-block;
 }
 
-.cover
-{
-	display: inline-block;
-	vertical-align: bottom;
+
+[data-masonry-item] {
+	/*display: block;*/
+	width: 200px;
+	border:1px solid #333;
+	box-sizing: border-box;
+	word-break: break-all;
+	margin: 5px;
 }
 
-.cover.active{
-	border: 10px solid #1E90FF;
-}
-
-.cover.requested {
-	border: 10px solid #CD5C5C;
-}
-
-.book{
-	padding: 0 10px 10px 0;
+[data-masonry-item] img{
+	width: 100%;
 }

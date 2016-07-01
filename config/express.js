@@ -8,6 +8,7 @@ import cors from 'cors';
 import httpStatus from 'http-status';
 import expressWinston from 'express-winston';
 import expressValidation from 'express-validation';
+import expressSession from 'express-session';
 import winstonInstance from './winston';
 import routes from '../server/routes';
 import config from './env';
@@ -22,12 +23,14 @@ if (config.env === 'development') {
 }
 app.use('/client', express.static(`${path}/client`));
 
-app.use(passport.initialize());
-app.use(passport.session());
 
 // parse body params and attache them to req.body
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
+app.use(expressSession({ secret: 'keyboard cat', resave: true, saveUninitialized: true }));
+
+app.use(passport.initialize());
+app.use(passport.session());
 
 app.use(cookieParser());
 app.use(compress());

@@ -1,23 +1,21 @@
 /**
  * Created by Shahar on 28/03/2016.
  */
-myApp.controller('navigationController', ['$scope','$window','$rootScope', function($scope,$window,$rootScope) {
+myApp.controller('navigationController', ['$scope','$window','$rootScope', 'userService', function($scope,$window,$rootScope, $userService) {
 
         $scope.isGuest = true;
-        $scope.username = "";
+        $scope.user = {};
 
         $rootScope.$on('user:logged-in',updateUserDetails);
 
         function updateUserDetails(){
-            var today =  new Date().getTime();
-            var expiredDate = new Date($window.sessionStorage.timestap).getTime();
-            if($window.sessionStorage.username && today <= expiredDate){
-                    $scope.username = $window.sessionStorage.username;
+            $userService.get().success(function(data){
+                if(data) {
+                    $scope.user = data;
+                    $window.sessionStorage.userid = data._id;
                     $scope.isGuest = false;
-            }
-            else{
-                $scope.isGuest = true;
-            }
+                }
+            });
         }
 
         updateUserDetails();

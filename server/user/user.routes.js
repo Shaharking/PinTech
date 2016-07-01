@@ -13,16 +13,12 @@ debug(secret);
 router.route('/')
 	/** GET /api/users - Get list of users */
 	.get(userCtrl.list)
-
 	/** POST /api/users - Create new user */
 	.post(validate(paramValidation.createUser), userCtrl.create);
 
-router.route('/:username')
+router.route('/:userid')
 	/** GET /api/users/:token - Get user */
 	.get(validate(paramValidation.getUser), userCtrl.get)
-
-	/** PUT /api/users/:token - Update user */
-	.put(validate(paramValidation.getUser), userCtrl.update)
 
 	/** DELETE /api/users/:token - Delete user */
 	.delete(validate(paramValidation.getUser), userCtrl.remove);

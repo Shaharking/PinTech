@@ -1,33 +1,13 @@
 import User from './user.model';
-import jwt from 'jsonwebtoken';
 
 /**
  * Load user and append to req.
  */
 function load(req, res, next, id) {
-	const token = req.body.token || req.query.token || req.headers['x-access-token'];
-	let error;
-	if (token)	{
-		// verifies secret and checks exp
-		jwt.verify(token, process.env.SECRET_KEY, (err, user) => {
-			if (err) {
-				error = new Error('Failed to authenticate token.');
-				next(error);
-			} else {
-				User.findOneAsync({ _id: user._id }).then((userObj) => {
-					// if everything is good, save to request for use in other routes
-					// for now user can only load himself.
-					if (user.username === id) {
-						req.user = userObj;		// eslint-disable-line no-param-reassign
-						return next();
-					}
-				});
-			}
-		});
-	} else	{
-		error = new Error('No token provided');
-		next(error);
+	if (id === req.user._id) {
+		return next();
 	}
+	next(new Error('You can get only your use data'));
 }
 
 /**
@@ -49,7 +29,7 @@ function create(req, res, next) {
 		username: req.body.username,
 		email: req.body.email,
 		password: req.body.password,
-		books: []
+		name: req.body.username
 	});
 
 	user.saveAsync()

@@ -3,15 +3,21 @@
 <html ng-app="myApp">
 
 	<head>
-		<title>Book Trading Club</title>
+		<title>Pintech</title>
         <meta name="viewport" content="width=device-width, initial-scale=1">
-		<link rel="stylesheet" href="/client/bower_components/bootstrap/dist/css/bootstrap.css"/>
-		<link rel="stylesheet" href="/client/bower_components/sweetalert/dist/sweetalert.css"/>
-		<script src="/client/bower_components/angular/angular.js"></script>
-		<script src="/client/bower_components/sweetalert/dist/sweetalert.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"/>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.css"/>
+        <script src="/client/bower_components/angular/angular.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.js"></script>
         <script src="/client/bower_components/angular-route/angular-route.min.js"></script>
         <script src="/client/bower_components/angular-sweetalert/sweetalert.js"></script>
         <script src="/client/bower_components/angular-sanitize/angular-sanitize.min.js"></script>
+
+        <script>window.imagesLoaded || document.write('<script src="//cdnjs.cloudflare.com/ajax/libs/jquery.imagesloaded/3.2.0/imagesloaded.pkgd.min.js"><\/script>')</script>
+        <script src="http://masonry.desandro.com/masonry.pkgd.js"></script>
+        <script>window.Masonry || document.write('<script src="//cdnjs.cloudflare.com/ajax/libs/masonry/3.3.2/masonry.pkgd.min.js"><\/script>')</script>
+
         <script src="/client/dist/all.js"></script>
 		<link href="/client/css/main.css" rel="stylesheet" type="text/css">
 	</head>
@@ -24,15 +30,13 @@
                     <a class="blog-nav-item active" href="/#/">Home</a>
                     <a class="blog-nav-item" href="/#/register" ng-show="isGuest">Sign up</a>
                     <a class="blog-nav-item" href="/#/signin" ng-show="isGuest">Sign in</a>
-                    <a class="blog-nav-item" href="/#/books" ng-hide="isGuest">my books</a>
-                    <a class="blog-nav-item" href="/#/browse" ng-hide="isGuest">books trade</a>
-                    <a class="blog-nav-item" href="/#/profile" ng-hide="isGuest">profile</a>
-                    <a class="blog-nav-item navbar-right" ng-hide="isGuest" href="/#/user/{{username}}">{{username}}</a>
+                    <a class="blog-nav-item" href="/#/books" ng-hide="isGuest" href="/#/user/{{user._id}}" >my pins</a>
+                    <a class="blog-nav-item" href="/#/pin" ng-hide="isGuest">add pin</a>
+                    <a class="blog-nav-item navbar-right" ng-hide="isGuest" href="/#/user/{{user._id}}">{{user.name}}</a>
                 </nav>
             </div>
         </div>
         <div class="container">
-
             <div ng-view="">
 
             </div>
